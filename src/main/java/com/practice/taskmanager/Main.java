@@ -1,3 +1,4 @@
+
 package com.practice.taskmanager;
 
 import java.util.ArrayList;
@@ -26,10 +27,13 @@ public class Main {
                     running = false;
                     System.out.println("Goodbye!");
                 }
-                default -> System.out.println("Please choose a number from 1 to 5.");
+                default ->
+                    System.out.println("Please choose a number from 1 to 5.");
             }
+
             System.out.println();
         }
+
         scanner.close();
     }
 
@@ -61,6 +65,7 @@ public class Main {
         }
 
         System.out.println("--- Your Tasks ---");
+
         for (Task task : tasks) {
             System.out.println(task);
         }
@@ -110,6 +115,7 @@ public class Main {
                 return task;
             }
         }
+
         return null;
     }
 
@@ -117,6 +123,7 @@ public class Main {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().trim();
+
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException exception) {
