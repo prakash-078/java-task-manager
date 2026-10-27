@@ -39,7 +39,9 @@ public class Main {
 
     private static void printMenu() {
         System.out.println("1. Add task");
-        System.out.println("2. View All Tasks");
+
+        System.out.println("2. Display All Tasks");
+        
         System.out.println("3. Mark task as completed");
         System.out.println("4. Delete task");
         System.out.println("5. Exit");
