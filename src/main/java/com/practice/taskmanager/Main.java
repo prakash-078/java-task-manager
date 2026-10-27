@@ -45,18 +45,39 @@ public class Main {
         System.out.println("5. Exit");
     }
 
-    private static void addTask() {
-        System.out.print("Enter task title: ");
-        String title = scanner.nextLine().trim();
+    
+private static void addTask() {
+    System.out.print("Enter task title: ");
+    String title = scanner.nextLine().trim();
 
-        if (title.isEmpty()) {
-            System.out.println("Task title cannot be empty.");
+    if (title.isEmpty()) {
+        System.out.println("Task title cannot be empty.");
+        return;
+    }
+
+    System.out.println("Choose priority:");
+    System.out.println("1. High");
+    System.out.println("2. Medium");
+    System.out.println("3. Low");
+
+    int choice = readInt("Enter priority (1-3): ");
+
+    String priority;
+
+    switch (choice) {
+        case 1 -> priority = "High";
+        case 2 -> priority = "Medium";
+        case 3 -> priority = "Low";
+        default -> {
+            System.out.println("Invalid priority.");
             return;
         }
-
-        tasks.add(new Task(nextId++, title));
-        System.out.println("Task added successfully.");
     }
+
+    tasks.add(new Task(nextId++, title, priority));
+    System.out.println("Task added successfully.");
+}
+
 
     private static void listTasks() {
         if (tasks.isEmpty()) {
@@ -133,14 +154,17 @@ public class Main {
     }
 }
 
+
 class Task {
     private final int id;
     private final String title;
+    private final String priority;
     private boolean completed;
 
-    public Task(int id, String title) {
+    public Task(int id, String title, String priority) {
         this.id = id;
         this.title = title;
+        this.priority = priority;
         this.completed = false;
     }
 
@@ -155,6 +179,8 @@ class Task {
     @Override
     public String toString() {
         String status = completed ? "Completed" : "Pending";
-        return id + ". [" + status + "] " + title;
+
+        return id + ". [" + status + "] "
+                + title + " | Priority: " + priority;
     }
 }
